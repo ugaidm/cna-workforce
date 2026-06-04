@@ -16,7 +16,7 @@ source("plot_policy_wheel_internal.R")
 # reading in a data frame where rows are states, columns are policies, and values are enactment dates
 
 # Values can come in the forms: 0, 1, or 2 - 1 is the National Average, 0 is either 2 standard deviations under or least common difference, 2 means 2 standard deviations above or most common difference
-df_wide <- read.xlsx("C:/Users/maw13321/Documents/GitHub/CNA-policy-wheel/Data/processed/CNA Variables Wheel.xlsx")
+df_wide <- read.xlsx("../Data/processed/CNA Variables Wheel.xlsx")
 df_wide$state[df_wide$state == "NATIONAL"] <- "US"
 names(df_wide) <- gsub("\\.", " ", names(df_wide))
 
