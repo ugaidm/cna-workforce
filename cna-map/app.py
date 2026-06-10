@@ -227,7 +227,11 @@ def map():
         color=metric,
         hover_name="state_name",
         scope="usa",
-        color_continuous_scale="Blues",
+        color_continuous_scale=[
+            [0.0, "#edf4fd"],   # light
+            [0.5, "#76a4e1"],   # midpoint
+            [1.0, "#0b3c78"]    # dark
+        ],
         basemap_visible=False
     )
 
