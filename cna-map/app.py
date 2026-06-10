@@ -228,9 +228,9 @@ def map():
         hover_name="state_name",
         scope="usa",
         color_continuous_scale=[
-            [0.0, "#edf4fd"],   # light
-            [0.5, "#76a4e1"],   # midpoint
-            [1.0, "#0b3c78"]    # dark
+            [0.0, "#f4f8fe"],
+            [0.5, "#76a4e1"],
+            [1.0, "#042554"]
         ],
         basemap_visible=False
     )
@@ -257,9 +257,15 @@ def map():
     )
 
     fig.update_layout(
+        autosize=True,
         height=520,
-        margin=dict(l=10, r=10, t=5, b=0),
-        geo=dict(scope="usa", projection_scale=0.95),
+        margin=dict(l=0, r=0, t=5, b=0),
+        geo=dict(
+            scope="usa",
+            projection_type="albers usa",
+            projection_scale=0.85,
+            center=dict(lat=37.8, lon=-96)
+        ),
         clickmode="event+select"
     )
 
