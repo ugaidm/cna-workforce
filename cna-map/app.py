@@ -310,10 +310,10 @@ def national_main_demos_card():
     label = selected_group_label()
 
     return stat_card(
-        "National Main Demos",
+        "National Main Demographics",
         [
             (f"{label} age", f"{national_value('avg_age', cna_col):.1f}"),
-            ("Average person age", f"{national_value('avg_age', 'national_all'):.1f}"),
+            ("Average US Resident age", f"{national_value('avg_age', 'national_all'):.1f}"),
             (f"{label} wages", f"${national_value('avg_wages', cna_col):,.0f}"),
             ("Person wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
         ]
@@ -336,7 +336,7 @@ def average_cna_card():
 
 def average_person_card():
     return stat_card(
-        "Average Person",
+        "US Resident",
         [
             ("Average age", f"{national_value('avg_age', 'national_all'):.1f}"),
             ("Average wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
