@@ -315,7 +315,7 @@ def national_main_demos_card():
             (f"{label} age", f"{national_value('avg_age', cna_col):.1f}"),
             ("Average US Resident age", f"{national_value('avg_age', 'national_all'):.1f}"),
             (f"{label} wages", f"${national_value('avg_wages', cna_col):,.0f}"),
-            ("Person wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
+            ("US Resident wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
         ]
     )
 
