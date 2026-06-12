@@ -26,7 +26,7 @@ national = pd.read_excel("national_comparison.xlsx")
 state_abbr = {
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR",
     "California": "CA", "Colorado": "CO", "Connecticut": "CT",
-    "Delaware": "DE", "Florida": "FL",
+    "Delaware": "DE", "District of Columbia": "DC", "Florida": "FL",
     "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL",
     "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY",
     "Louisiana": "LA", "Maine": "ME", "Maryland": "MD",
