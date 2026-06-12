@@ -176,7 +176,12 @@ with ui.sidebar():
     ui.input_select(
         "selected_state",
         "Choose a state",
-        choices=["National"] + sorted(demo_cna["state_name"].dropna().unique().tolist())
+        choices=["National"] + sorted(
+            [
+                s for s in demo_cna["state_name"].dropna().unique().tolist()
+                if s != "District of Columbia"
+            ]
+        )
     )
 
     ui.input_select(
