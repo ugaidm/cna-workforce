@@ -272,10 +272,13 @@ def map():
 
     fig_widget = go.FigureWidget(fig)
 
+    abbr_to_state = {v: k for k, v in state_abbr.items()}
+
     def handle_click(trace, points, selector):
         if points.point_inds:
             idx = points.point_inds[0]
-            clicked_state.set(trace.customdata[idx][0])
+            clicked_abbr = trace.locations[idx]
+            clicked_state.set(abbr_to_state.get(clicked_abbr, "National"))
 
     fig_widget.data[0].on_click(handle_click)
 
