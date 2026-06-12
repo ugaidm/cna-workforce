@@ -530,10 +530,10 @@ def dashboard_cards():
             """
         )
         
-        return shiny_ui.div(
-            state_basics_card(state),
-            observations_card(state),
-            compare_to_cna_card(state),
-            compare_to_person_card(state),
-            class_="card-grid-4"
-        )
+    return shiny_ui.div(
+        state_basics_card(state),
+        observations_card(state),
+        compare_to_cna_card(state),
+        compare_to_person_card(state),
+        class_="card-grid-4"
+    )
