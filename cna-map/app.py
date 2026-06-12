@@ -368,7 +368,12 @@ def state_basics_card(state):
             ("Percent HS Diploma", f"{row.get('pct_hs_grad_diploma_or_cred', 0):.1f}"),
             ("Wages", f"${row.get('avg_wages', 0):,.0f}"),
             ("Percent Married", f"{row.get('pct_married', 0):.1f}"),
-            ("Under poverty", f"{row.get('pct_under_poverty', 0):.1f}%"),
+            (
+                "Under poverty",
+                "Data not available"
+                if pd.isna(row.get("pct_under_poverty"))
+                else f"{row.get('pct_under_poverty'):.1f}%"
+            ),
         ]
     )
 
