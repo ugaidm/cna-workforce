@@ -79,7 +79,15 @@ def selected_group_label():
 
 
 def national_value(metric, column):
-    return national[national["metric"] == metric][column].iloc[0]
+    matches = national[national["metric"] == metric]
+
+    if len(matches) == 0:
+        raise ValueError(f"Metric not found in national_comparison.xlsx: {metric}")
+
+    if column not in national.columns:
+        raise ValueError(f"Column not found in national_comparison.xlsx: {column}")
+
+    return matches[column].iloc[0]
 
 
 @reactive.effect
