@@ -226,6 +226,7 @@ def map():
         locationmode="USA-states",
         color=metric,
         hover_name="state_name",
+        custom_data=["state_name"],
         scope="usa",
         color_continuous_scale=[
             [0.0, "#f4f8fe"],
@@ -274,7 +275,7 @@ def map():
     def handle_click(trace, points, selector):
         if points.point_inds:
             idx = points.point_inds[0]
-            clicked_state.set(df.iloc[idx]["state_name"])
+            clicked_state.set(trace.customdata[idx][0])
 
     fig_widget.data[0].on_click(handle_click)
 
