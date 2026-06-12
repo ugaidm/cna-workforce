@@ -340,15 +340,17 @@ def average_cna_card():
 
 
 def average_person_card():
+    person_col = "national_all"
+
     return stat_card(
         "US Resident",
         [
-            ("Age", f"{national_value('avg_age', national_all):.1f}"),
-            ("Percent White", f"{national_value('pct_white', national_all):.1f}"),
-            ("Percent HS Diploma", f"{national_value('pct_hs_grad_diploma_or_cred', national_all):.1f}"),
-            ("Wages", f"${national_value('avg_wages', national_all):,.0f}"),
-            ("Percent Married", f"{national_value('pct_married', national_all):.1f}"),
-            ("Under poverty", f"{national_value('pct_under_poverty', national_all):.1f}%"),
+            ("Age", f"{national_value('avg_age', person_col):.1f}"),
+            ("Percent White", f"{national_value('pct_white', person_col):.1f}"),
+            ("Percent HS Diploma", f"{national_value('pct_hs_grad_diploma_or_cred', person_col):.1f}"),
+            ("Wages", f"${national_value('avg_wages', person_col):,.0f}"),
+            ("Percent Married", f"{national_value('pct_married', person_col):.1f}"),
+            ("Under poverty", f"{national_value('pct_under_poverty', person_col):.1f}%"),
         ]
     )
 
