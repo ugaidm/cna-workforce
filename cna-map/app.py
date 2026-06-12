@@ -513,27 +513,27 @@ def dashboard_cards():
     state = current_state()
 
     if state == "National":
-    return shiny_ui.div(
-        shiny_ui.div(
-            average_cna_card(),
-            style="width:350px;"
-        ),
-        shiny_ui.div(
-            average_person_card(),
-            style="width:350px;"
-        ),
-        style="""
-            display:flex;
-            justify-content:center;
-            gap:2rem;
-            margin-top:1rem;
-        """
-    )
-    
-    return shiny_ui.div(
-        state_basics_card(state),
-        observations_card(state),
-        compare_to_cna_card(state),
-        compare_to_person_card(state),
-        class_="card-grid-4"
-    )
+        return shiny_ui.div(
+            shiny_ui.div(
+                average_cna_card(),
+                style="width:350px;"
+            ),
+            shiny_ui.div(
+                average_person_card(),
+                style="width:350px;"
+            ),
+            style="""
+                display:flex;
+                justify-content:center;
+                gap:2rem;
+                margin-top:1rem;
+            """
+        )
+        
+        return shiny_ui.div(
+            state_basics_card(state),
+            observations_card(state),
+            compare_to_cna_card(state),
+            compare_to_person_card(state),
+            class_="card-grid-4"
+        )
