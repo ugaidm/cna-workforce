@@ -314,21 +314,6 @@ def stat_card(title, stats):
     )
 
 
-def national_main_demos_card():
-    cna_col = selected_national_cna_column()
-    label = selected_group_label()
-
-    return stat_card(
-        "National Main Demographics",
-        [
-            (f"{label} age", f"{national_value('avg_age', cna_col):.1f}"),
-            ("US Resident age", f"{national_value('avg_age', 'national_all'):.1f}"),
-            (f"{label} wages", f"${national_value('avg_wages', cna_col):,.0f}"),
-            ("US Resident wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
-        ]
-    )
-
-
 def average_cna_card():
     cna_col = selected_national_cna_column()
     label = selected_group_label()
@@ -337,7 +322,10 @@ def average_cna_card():
         label,
         [
             ("Age", f"{national_value('avg_age', cna_col):.1f}"),
+            ("Percent White", f"{national_value('pct_white', cna_col):.1f}"),
+            ("Percent HS Diploma", f"{national_value('pct_hs_grad_dipoloma_or_cred', cna_col):.1f}"),
             ("Wages", f"${national_value('avg_wages', cna_col):,.0f}"),
+            ("Percent Married", f"{national_value('pct_married', cna_col):.1f}"),
             ("Under poverty", f"{national_value('pct_under_poverty', cna_col):.1f}%"),
         ]
     )
@@ -347,9 +335,12 @@ def average_person_card():
     return stat_card(
         "US Resident",
         [
-            ("Age", f"{national_value('avg_age', 'national_all'):.1f}"),
-            ("Wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
-            ("Under poverty", f"{national_value('pct_under_poverty', 'national_all'):.1f}%"),
+            ("Age", f"{national_value('avg_age', national_all):.1f}"),
+            ("Percent White", f"{national_value('pct_white', national_all):.1f}"),
+            ("Percent HS Diploma", f"{national_value('pct_hs_grad_dipoloma_or_cred', national_all):.1f}"),
+            ("Wages", f"${national_value('avg_wages', national_all):,.0f}"),
+            ("Percent Married", f"{national_value('pct_married', national_all):.1f}"),
+            ("Under poverty", f"{national_value('pct_under_poverty', national_all):.1f}%"),
         ]
     )
 
@@ -363,7 +354,10 @@ def state_basics_card(state):
         [
             ("Age", f"{row.get('avg_age', 0):.1f}"),
             ("Percent female", f"{row.get('pct_female', 0):.1f}%"),
+            ("Percent White", f"{row.get('pct_white', 0):.1f}"),
+            ("Percent HS Diploma", f"{row.get('pct_hs_grad_dipoloma_or_cred', 0):.1f}"),
             ("Wages", f"${row.get('avg_wages', 0):,.0f}"),
+            ("Percent Married", f"{row.get('pct_married', 0):.1f}"),
             ("Under poverty", f"{row.get('pct_under_poverty', 0):.1f}%"),
         ]
     )
