@@ -313,7 +313,7 @@ def national_main_demos_card():
         "National Main Demographics",
         [
             (f"{label} age", f"{national_value('avg_age', cna_col):.1f}"),
-            ("Average US Resident age", f"{national_value('avg_age', 'national_all'):.1f}"),
+            ("US Resident age", f"{national_value('avg_age', 'national_all'):.1f}"),
             (f"{label} wages", f"${national_value('avg_wages', cna_col):,.0f}"),
             ("US Resident wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
         ]
@@ -327,8 +327,8 @@ def average_cna_card():
     return stat_card(
         label,
         [
-            ("Average age", f"{national_value('avg_age', cna_col):.1f}"),
-            ("Average wages", f"${national_value('avg_wages', cna_col):,.0f}"),
+            ("Age", f"{national_value('avg_age', cna_col):.1f}"),
+            ("Wages", f"${national_value('avg_wages', cna_col):,.0f}"),
             ("Under poverty", f"{national_value('pct_under_poverty', cna_col):.1f}%"),
         ]
     )
@@ -338,8 +338,8 @@ def average_person_card():
     return stat_card(
         "US Resident",
         [
-            ("Average age", f"{national_value('avg_age', 'national_all'):.1f}"),
-            ("Average wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
+            ("Age", f"{national_value('avg_age', 'national_all'):.1f}"),
+            ("Wages", f"${national_value('avg_wages', 'national_all'):,.0f}"),
             ("Under poverty", f"{national_value('pct_under_poverty', 'national_all'):.1f}%"),
         ]
     )
@@ -352,9 +352,9 @@ def state_basics_card(state):
     return stat_card(
         f"State Basics: {state}",
         [
-            ("Average age", f"{row.get('avg_age', 0):.1f}"),
+            ("Age", f"{row.get('avg_age', 0):.1f}"),
             ("Percent female", f"{row.get('pct_female', 0):.1f}%"),
-            ("Average wages", f"${row.get('avg_wages', 0):,.0f}"),
+            ("Wages", f"${row.get('avg_wages', 0):,.0f}"),
             ("Under poverty", f"{row.get('pct_under_poverty', 0):.1f}%"),
         ]
     )
@@ -497,7 +497,7 @@ def compare_to_person_card(state):
             bullets.append(f"{abs(diff):.1f}% lower poverty rate than the national workforce")
 
     return shiny_ui.card(
-        shiny_ui.card_header("Comparison to Natl. Avg"),
+        shiny_ui.card_header("Comparison to US Resident"),
         shiny_ui.tags.ul(*[shiny_ui.tags.li(b) for b in bullets]),
         class_="compact-card"
     )
@@ -513,13 +513,23 @@ def dashboard_cards():
     state = current_state()
 
     if state == "National":
-        return shiny_ui.div(
-            national_main_demos_card(),
+    return shiny_ui.div(
+        shiny_ui.div(
             average_cna_card(),
+            style="width:350px;"
+        ),
+        shiny_ui.div(
             average_person_card(),
-            class_="card-grid-3"
-        )
-
+            style="width:350px;"
+        ),
+        style="""
+            display:flex;
+            justify-content:center;
+            gap:2rem;
+            margin-top:1rem;
+        """
+    )
+    
     return shiny_ui.div(
         state_basics_card(state),
         observations_card(state),
